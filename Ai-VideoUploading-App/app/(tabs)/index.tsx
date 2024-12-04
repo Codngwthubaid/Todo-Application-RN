@@ -1,23 +1,23 @@
-import {StyleSheet, Text, View } from 'react-native';
-
+import { StyleSheet, Text, View } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+import { Link } from 'expo-router';
 
 export default function HomeScreen() {
   return (
-    <View>
-      <Text style={styles.titleContainer}>Lulla</Text>
+    <View style={styles.titleContainer}>
+      <Text>Lulla</Text>
+      <Link href="/profile" style={{ color: "blue" }}>Profile</Link>
+      <StatusBar style='auto' />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   titleContainer: {
-    flexDirection: 'column',
-    alignItems: 'center',
+    display: "flex",
+    flex: 1,
     justifyContent: "center",
-    textAlign: "center",
-    height: 100,
-    gap: 8,
-    fontSize:20,
+    alignContent: "center",
     backgroundColor: "white",
   }
 });
