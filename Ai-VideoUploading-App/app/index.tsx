@@ -2,8 +2,11 @@ import React from 'react'
 import { Image, ScrollView, StyleSheet, Text, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { images } from "../constants/images"
+import CustomButton from '@/components/CustomButton'
+import { useRouter } from 'expo-router'
 
 const App = () => {
+  const router = useRouter()
   return (
     <SafeAreaView className='bg-primary h-full'>
       <ScrollView contentContainerStyle={{ height: "100%" }}>
@@ -33,6 +36,11 @@ const App = () => {
           </View>
           <Text className='text-sm font-pregular mt-10 text-white text-center'>Where creativity meets innovations: embark on a journey of limitless exploration with Aora</Text>
 
+          <CustomButton
+            title ="Continue with Email"
+            handlePress={() => router.push('/sign-in')}
+            containerStyles='w-full mt-10'
+          />
         </View>
       </ScrollView>
     </SafeAreaView>
