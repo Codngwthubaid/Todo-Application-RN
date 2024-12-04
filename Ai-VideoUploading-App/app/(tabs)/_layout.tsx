@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Image, ImageSourcePropType, Text } from 'react-native';
 import { Tabs } from 'expo-router';
-import {icons} from "@/constants/icons"
+import { icons } from "@/constants/icons"
 
 interface TabIconsProps {
   icon: ImageSourcePropType;
@@ -16,21 +16,32 @@ const TabIcons: React.FC<TabIconsProps> = ({ icon, color, name, focused }) => {
       <Image
         source={icon}
         resizeMode='contain'
-        tintColor= {color}
+        tintColor={color}
         className='w-6 h-6'
       />
-      <Text className={`${focused ? "font-psemibold" : "font-pregular"} text-sm w-full`}>{name}</Text>
+      <Text className={`${focused ? "font-psemibold" : "font-pregular"} text-sm w-full`} style={{ color: color }}>{name}</Text>
     </View>
   );
 };
 
 const TabsLayout: React.FC = () => {
   return (
-    <Tabs 
-    screenOptions={{
-      tabBarShowLabel: false
-    }}
-    >
+    <Tabs
+      screenOptions={{
+        tabBarShowLabel: false,
+        tabBarActiveTintColor: "#FFA001",
+        tabBarInactiveBackgroundColor: "CDCDE0",
+        tabBarStyle: {
+          backgroundColor: "#161622",
+          borderTopLeftRadius:20,
+          borderTopRightRadius:20,
+          paddingTop:18,
+          borderTopWidth: 1,
+          borderTopColor: "#232533",
+          height: 84
+        }
+      }}
+    > 
       <Tabs.Screen
         name='home'
         options={{
@@ -44,9 +55,9 @@ const TabsLayout: React.FC = () => {
               focused={focused}
             />
           )
-        }}   
+        }}
       />
-       <Tabs.Screen
+      <Tabs.Screen
         name='bookmark'
         options={{
           title: "Bookmark",
@@ -61,7 +72,7 @@ const TabsLayout: React.FC = () => {
           )
         }}
       />
-             <Tabs.Screen
+      <Tabs.Screen
         name='create'
         options={{
           title: "Create",
@@ -76,7 +87,7 @@ const TabsLayout: React.FC = () => {
           )
         }}
       />
-             <Tabs.Screen
+      <Tabs.Screen
         name='profile'
         options={{
           title: "Profile",
