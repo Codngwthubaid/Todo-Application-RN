@@ -1,6 +1,16 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./app/**/*.{js,jsx,ts,tsx}", "./components/**/*.{js,jsx,ts,tsx}"],
+  // content: [
+  //   "./App.{js,jsx,ts,tsx}",
+  //   "./components/**/*.{js,jsx,ts,tsx}"
+  // ],
+  content: [
+    "./App.{js,jsx,ts,tsx}", // Adjust this path based on your project structure
+    "./app/**/*.{js,jsx,ts,tsx}",
+    "./components/**/*.{js,jsx,ts,tsx}",
+    "./screens/**/*.{js,jsx,ts,tsx}",
+    "./node_modules/nativewind/dist/**/*.js" // Include NativeWind
+  ],
   theme: {
     extend: {
       colors: {
