@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const TabsLayout = () => {
+const Profile = () => {
   return (
     <View>
-      <Text>TabsLayout</Text>
+      <Text>I'm Profile page </Text>
     </View>
   )
 }
 
-export default TabsLayout
+export default Profile
 
 const styles = StyleSheet.create({})
