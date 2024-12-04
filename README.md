@@ -1,5 +1,3 @@
-### **README.md for AI-VideoUploading-App**
-
 # **AI-VideoUploading-App**
 
 AI-VideoUploading-App simplifies video uploads by utilizing artificial intelligence to automatically tag and categorize uploaded videos. Built with **React Native**, **Appwrite**, and **Expo**, this app ensures seamless user experience and leverages various **npm packages** for enhanced functionality.
