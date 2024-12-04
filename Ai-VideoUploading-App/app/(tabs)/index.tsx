@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native';
+import {StyleSheet, Text, View } from 'react-native';
 
 
 export default function HomeScreen() {
@@ -11,8 +11,13 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create({
   titleContainer: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     alignItems: 'center',
+    justifyContent: "center",
+    textAlign: "center",
+    height: 100,
     gap: 8,
+    fontSize:20,
+    backgroundColor: "white",
   }
 });
