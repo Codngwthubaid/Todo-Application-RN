@@ -14,7 +14,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "packages": "com.rn.ai-videouploading-app"
     },
     "web": {
       "bundler": "metro",
