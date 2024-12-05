@@ -4,6 +4,7 @@ import { images } from "@/constants/images"
 import FormFields from '@/components/FormFields'
 import CustomButton from '@/components/CustomButton'
 import { Link } from 'expo-router'
+import { createUser } from '@/lib/appwrite'
 
 const SignUp = () => {
 
@@ -15,7 +16,7 @@ const SignUp = () => {
   const [isSubmitting, setisSubmitting] = useState(false)
 
   const handleSubmit = () => {
-
+    createUser()
   }
 
   return (
@@ -60,7 +61,6 @@ const SignUp = () => {
             <Text className='text-white font-pregular text-lg'>Already have an account</Text>
             <Link href="/sign-in" className='text-lg font-pregular text-secondary'>Sign In</Link>
           </View>
-
         </View>
       </ScrollView>
     </SafeAreaView>
