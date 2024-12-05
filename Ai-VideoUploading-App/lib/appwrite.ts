@@ -38,47 +38,71 @@ database = new Databases(client)
 
 export const createUser = async (email: string, password: string, username: string) => {
     try {
-        const ID = { unique: () => `${Date.now()}` };
+        const userId = ID.unique()
         const newAccount = await account.create(
-            ID.unique(),
+            userId,
             email,
             password,
             username
         )
 
-        if (!newAccount) throw Error
+        if (!newAccount) throw new Error("Failed to create account ...")
 
         const avatarURL = avatar.getInitials(username)
         await signIn(email, password)
-
         const newUser = await database.createDocument(
             config.databaseID,
             config.usersCollectionID,
-            ID.unique(),
+            userId,
             {
                 accountId: newAccount.$id,
                 email,
                 password,
                 username,
-                avatar:avatarURL
+                avatar: avatarURL
             }
         )
         return newUser
 
-    } catch (error) {
+    } catch (error: any) {
         console.log(error);
-        throw Error
+        throw new Error(error)
     }
 }
 
 
 export async function signIn(email: string, password: string) {
+    // try {
+    //     const session = await account.createEmailPasswordSession(email, password)
+    //     return session;
+    // } catch (error:any) {
+    //     console.log(error);
+    //     throw new Error (error)
+    // }
     try {
-        const session = await account.createEmailPasswordSession(email, password)
-        return session;
-    } catch (error) {
-        console.log(error);
-        throw Error
+        // Check if there's an active session first
+        try {
+            await account.get();
+            // If the above doesn't throw, we have an active session
+            await account.deleteSession('current');
+        } catch (e) {
+            // No active session, we can proceed with login
+        }
 
+        const session = await account.createEmailPasswordSession(email, password);
+        return session;
+    } catch (error: any) {
+        console.error("Error in signIn:", error);
+        throw error;
+    }
+}
+
+
+export async function signOut() {
+    try {
+        await account.deleteSession('current');
+    } catch (error: any) {
+        console.error("Error in signOut:", error);
+        throw error;
     }
 }
