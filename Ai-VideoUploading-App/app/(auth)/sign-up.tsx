@@ -7,19 +7,17 @@ import { Link, router } from 'expo-router'
 import { createUser } from '@/lib/appwrite'
 
 const SignUp = () => {
+  const [isSubmitting, setisSubmitting] = useState(false)
   const [form, setform] = useState({
     username: "",
     email: "",
     password: ""
   })
-  const [isSubmitting, setisSubmitting] = useState(false)
 
   const handleSubmit = async () => {
-
     if (!form.username || !form.email || !form.password) {
       Alert.alert("Error,please fill all the fields")
     }
-
     setisSubmitting(true)
 
     try {
@@ -48,7 +46,7 @@ const SignUp = () => {
 
           <FormFields
             title="Username"
-            value={form.email}
+            value={form.username}
             handleChangeText={(e: string) => setform({ ...form, username: e })}
             otherStyles="mt-20"
           />

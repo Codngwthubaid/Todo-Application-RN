@@ -59,7 +59,8 @@ export const createUser = async (email: string, password: string, username: stri
                 accountId: newAccount.$id,
                 email,
                 password,
-                username
+                username,
+                avatar:avatarURL
             }
         )
         return newUser
