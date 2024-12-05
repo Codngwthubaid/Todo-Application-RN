@@ -16,12 +16,11 @@ const Signin = () => {
     const handleSubmit = () => {
 
     }
-
-
+    
     return (
         <SafeAreaView className='bg-primary h-full'>
             <ScrollView>
-                <View className='w-full justify-center my-6 px-4 h-full'>
+                <View className='w-full justify-center my-6 px-4 min-h-[90vh]'>
                     <Image
                         source={images.logo}
                         className='w-[115px] h-[35px]'

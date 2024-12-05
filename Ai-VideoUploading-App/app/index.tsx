@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { images } from "../constants/images"
 import CustomButton from '@/components/CustomButton'
 import { useRouter } from 'expo-router'
+import { StatusBar } from 'expo-status-bar'
 
 const App = () => {
   const router = useRouter()
@@ -37,16 +38,15 @@ const App = () => {
           <Text className='text-sm font-pregular mt-10 text-white text-center'>Where creativity meets innovations: embark on a journey of limitless exploration with Aora</Text>
 
           <CustomButton
-            title ="Continue with Email"
+            title="Continue with Email"
             handlePress={() => router.push('/sign-in')}
             containerStyles='w-full mt-10'
           />
         </View>
       </ScrollView>
+      <StatusBar backgroundColor='#161622' style='light' />
     </SafeAreaView>
   )
 }
 
 export default App
-
-const styles = StyleSheet.create({})
