@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
-import { Image, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native'
+import { Alert, Image, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native'
 import { images } from "@/constants/images"
 import FormFields from '@/components/FormFields'
 import CustomButton from '@/components/CustomButton'
-import { Link } from 'expo-router'
+import { Link, router } from 'expo-router'
 import { createUser } from '@/lib/appwrite'
 
 const SignUp = () => {
-
   const [form, setform] = useState({
     username: "",
     email: "",
@@ -15,8 +14,25 @@ const SignUp = () => {
   })
   const [isSubmitting, setisSubmitting] = useState(false)
 
-  const handleSubmit = () => {
-    createUser()
+  const handleSubmit = async () => {
+
+    if (!form.username || !form.email || !form.password) {
+      Alert.alert("Error,please fill all the fields")
+    }
+
+    setisSubmitting(true)
+
+    try {
+      const result = await createUser(form.email, form.password, form.username)
+
+      // Set it to be a global state
+
+      router.replace("/(tabs)/home")
+    } catch (error: any) {
+      Alert.alert("Error", error.message)
+    } finally {
+      setisSubmitting(false)
+    }
   }
 
   return (

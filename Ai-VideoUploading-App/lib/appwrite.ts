@@ -1,4 +1,4 @@
-import { Client, Account } from 'react-native-appwrite';
+import { Client, Account, Avatars, Databases, ID } from 'react-native-appwrite';
 
 interface Config {
     endpoint: string;
@@ -23,6 +23,8 @@ export const config: Config = {
 
 let client: Client;
 let account: Account;
+let avatar: Avatars;
+let database: Databases;
 
 client = new Client();
 client
@@ -31,13 +33,51 @@ client
     .setPlatform(config.platform);
 
 account = new Account(client);
+avatar = new Avatars(client);
+database = new Databases(client)
 
-export const createUser = () => {
-    const ID = { unique: () => `${Date.now()}` };
-    account.create(ID.unique(), "me@example.com", "password", "Jane Doe")
-        .then(function (response: any) {
-            console.log(response);
-        }, function (error) {
-            console.log(error);
-        })
+export const createUser = async (email: string, password: string, username: string) => {
+    try {
+        const ID = { unique: () => `${Date.now()}` };
+        const newAccount = await account.create(
+            ID.unique(),
+            email,
+            password,
+            username
+        )
+
+        if (!newAccount) throw Error
+
+        const avatarURL = avatar.getInitials(username)
+        await signIn(email, password)
+
+        const newUser = await database.createDocument(
+            config.databaseID,
+            config.usersCollectionID,
+            ID.unique(),
+            {
+                accountId: newAccount.$id,
+                email,
+                password,
+                username
+            }
+        )
+        return newUser
+
+    } catch (error) {
+        console.log(error);
+        throw Error
+    }
+}
+
+
+export async function signIn(email: string, password: string) {
+    try {
+        const session = await account.createEmailPasswordSession(email, password)
+        return session;
+    } catch (error) {
+        console.log(error);
+        throw Error
+
+    }
 }

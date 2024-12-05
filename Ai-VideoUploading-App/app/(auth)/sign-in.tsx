@@ -5,7 +5,7 @@ import FormFields from '@/components/FormFields'
 import CustomButton from '@/components/CustomButton'
 import { Link } from 'expo-router'
 
-const Signin = () => {
+const SignIn = () => {
 
     const [form, setform] = useState({
         email: "",
@@ -60,6 +60,6 @@ const Signin = () => {
     )
 }
 
-export default Signin
+export default SignIn
 
 const styles = StyleSheet.create({})
