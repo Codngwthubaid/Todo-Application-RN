@@ -72,28 +72,12 @@ export const createUser = async (email: string, password: string, username: stri
 
 
 export async function signIn(email: string, password: string) {
-    // try {
-    //     const session = await account.createEmailPasswordSession(email, password)
-    //     return session;
-    // } catch (error:any) {
-    //     console.log(error);
-    //     throw new Error (error)
-    // }
     try {
-        // Check if there's an active session first
-        try {
-            await account.get();
-            // If the above doesn't throw, we have an active session
-            await account.deleteSession('current');
-        } catch (e) {
-            // No active session, we can proceed with login
-        }
-
-        const session = await account.createEmailPasswordSession(email, password);
+        const session = await account.createEmailPasswordSession(email, password)
         return session;
     } catch (error: any) {
-        console.error("Error in signIn:", error);
-        throw error;
+        console.log(error);
+        throw new Error(error)
     }
 }
 
