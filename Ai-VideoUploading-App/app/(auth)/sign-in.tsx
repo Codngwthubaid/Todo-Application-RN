@@ -25,7 +25,7 @@ const SignIn = () => {
 
             // Set it to be a global state
 
-            router.replace("/home")
+            router.replace("/(tabs)/home")
         } catch (error: any) {
             Alert.alert("Error", error.message)
         } finally {

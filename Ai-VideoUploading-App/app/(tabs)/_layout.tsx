@@ -107,6 +107,3 @@ const TabsLayout: React.FC = () => {
 };
 
 export default TabsLayout;
-
-const styles = StyleSheet.create({});
-

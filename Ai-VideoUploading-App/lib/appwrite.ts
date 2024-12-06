@@ -7,7 +7,7 @@ interface Config {
     databaseID: string;
     usersCollectionID: string;
     videosCollectionID: string;
-    storageID: string; // Note: corrected "stroageID" to "storageID"
+    storageID: string; 
 }
 
 
@@ -78,15 +78,5 @@ export async function signIn(email: string, password: string) {
     } catch (error: any) {
         console.log(error);
         throw new Error(error)
-    }
-}
-
-
-export async function signOut() {
-    try {
-        await account.deleteSession('current');
-    } catch (error: any) {
-        console.error("Error in signOut:", error);
-        throw error;
     }
 }
