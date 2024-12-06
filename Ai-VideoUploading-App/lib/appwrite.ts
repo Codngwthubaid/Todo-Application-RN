@@ -1,4 +1,4 @@
-import { Client, Account, Avatars, Databases, ID } from 'react-native-appwrite';
+import { Client, Account, Avatars, Databases, ID, Query } from 'react-native-appwrite';
 
 interface Config {
     endpoint: string;
@@ -7,7 +7,7 @@ interface Config {
     databaseID: string;
     usersCollectionID: string;
     videosCollectionID: string;
-    storageID: string; 
+    storageID: string;
 }
 
 
@@ -70,12 +70,33 @@ export const createUser = async (email: string, password: string, username: stri
 }
 
 
-export async function signIn(email: string, password: string) {
+export const signIn = async (email: string, password: string) => {
     try {
         const session = await account.createEmailPasswordSession(email, password)
         return session;
     } catch (error: any) {
         console.log(error);
         throw new Error(error)
+    }
+}
+
+export const getCurrentUser = async () => {
+    try {
+        const currentAccount = await account.get()
+        if (!currentAccount) throw Error
+
+        const currentUser = await database.listDocuments(
+            config.databaseID,
+            config.usersCollectionID,
+            [Query.equal("accountId", currentAccount.$id)]
+        )
+
+        if (!currentUser) throw Error
+        return currentUser.documents[0]
+
+    } catch (error: any) {
+        console.log(error);
+        throw new Error(error);
+
     }
 }
