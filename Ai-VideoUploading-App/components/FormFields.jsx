@@ -1,17 +1,8 @@
 import { Image, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import React, { useState } from 'react'
-import { icons } from "../constants/icons"
+import icons from '@/constants/icons'
 
-interface FormTypes {
-    title: string,
-    value: string,
-    handleChangeText: (e: string) => void,
-    otherStyles: string,
-    keyboardType?: string
-}
-
-
-const FormFields: React.FC<FormTypes> = ({ title, value, handleChangeText, otherStyles, keyboardType , }) => {
+const FormFields= ({ title, value, handleChangeText, otherStyles, keyboardType , }) => {
 
     const [showpassword, setShowpassword] = useState(false)
 
