@@ -13,6 +13,6 @@
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
-    "nativewind-env.d.ts", "context/GlobalProvider.js",
+    "nativewind-env.d.ts", "context/GlobalProvider.js", "constants/images.js", "constants/icons.js",
   ]
 }
