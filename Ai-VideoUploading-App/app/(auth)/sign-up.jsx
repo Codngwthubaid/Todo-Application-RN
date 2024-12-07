@@ -3,11 +3,12 @@ import { Alert, Image, SafeAreaView, ScrollView, Text, View } from 'react-native
 import { images } from "../../constants/images"
 import FormFields from '../../components/FormFields'
 import CustomButton from '../../components/CustomButton'
-import { Link, router } from 'expo-router'
+import { Link, useRouter } from 'expo-router'
 import { createUser } from "../../lib/appwrite"
 import { useGlobalContext } from '../../context/GlobalProvider'
 
 const SignUp = () => {
+  const router = useRouter() 
   const { setUser, setIsLogged } = useGlobalContext()
   const [isSubmitting, setisSubmitting] = useState(false)
   const [form, setform] = useState({
@@ -27,7 +28,7 @@ const SignUp = () => {
       setUser(result)
       setIsLogged(true)
 
-      router.replace("/home")
+      router.replace("/(tabs)/home")
     } catch (error) {
       Alert.alert("Error", error.message)
     } finally {

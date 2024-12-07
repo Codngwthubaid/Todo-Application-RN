@@ -3,11 +3,12 @@ import { Image, SafeAreaView, ScrollView, StyleSheet, Text, View, Alert } from '
 import { images } from "../../constants/images"
 import FormFields from "../../components/FormFields"
 import CustomButton from '../../components/CustomButton'
-import { Link, router } from 'expo-router'
+import { Link, useRouter } from 'expo-router'
 import { getCurrentUser, signIn } from "../../lib/appwrite"
 import { useGlobalContext } from '../../context/GlobalProvider'
 
 const SignIn = () => {
+    const router = useRouter()
     const { setUser, useIslogged } = useGlobalContext()
     const [form, setform] = useState({
         email: "",
@@ -28,7 +29,7 @@ const SignIn = () => {
             useIslogged(true)
             Alert.alert("User SignIn successfully ...")
 
-            router.replace("/home")
+            router.replace("/(tabs)/home")
         } catch (error) {
             Alert.alert("Error", error.message)
         } finally {
