@@ -3,14 +3,8 @@ import { StyleSheet, View, Image, ImageSourcePropType, Text } from 'react-native
 import { Tabs } from 'expo-router';
 import { icons } from "@/constants/icons"
 
-interface TabIconsProps {
-  icon: ImageSourcePropType;
-  color: string;
-  name: string;
-  focused: boolean;
-}
 
-const TabIcons: React.FC<TabIconsProps> = ({ icon, color, name, focused }) => {
+const TabIcons = ({ icon, color, name, focused }) => {
   return (
     <View className='flex-1 items-center'>
       <Image
@@ -24,7 +18,7 @@ const TabIcons: React.FC<TabIconsProps> = ({ icon, color, name, focused }) => {
   );
 };
 
-const TabsLayout: React.FC = () => {
+const TabsLayout = () => {
   return (
     <Tabs
       screenOptions={{
@@ -47,7 +41,7 @@ const TabsLayout: React.FC = () => {
         options={{
           title: "Home",
           headerShown: false,
-          tabBarIcon: ({ color, focused }: { color: string; focused: boolean }) => (
+          tabBarIcon: ({ color, focused }) => (
             <TabIcons
               icon={icons.home}
               color={color}
@@ -62,7 +56,7 @@ const TabsLayout: React.FC = () => {
         options={{
           title: "Bookmark",
           headerShown: false,
-          tabBarIcon: ({ color, focused }: { color: string; focused: boolean }) => (
+          tabBarIcon: ({ color, focused }) => (
             <TabIcons
               icon={icons.bookmark}
               color={color}
@@ -77,7 +71,7 @@ const TabsLayout: React.FC = () => {
         options={{
           title: "Create",
           headerShown: false,
-          tabBarIcon: ({ color, focused }: { color: string; focused: boolean }) => (
+          tabBarIcon: ({ color, focused }) => (
             <TabIcons
               icon={icons.plus}
               color={color}
@@ -92,7 +86,7 @@ const TabsLayout: React.FC = () => {
         options={{
           title: "Profile",
           headerShown: false,
-          tabBarIcon: ({ color, focused }: { color: string; focused: boolean }) => (
+          tabBarIcon: ({ color, focused }) => (
             <TabIcons
               icon={icons.profile}
               color={color}

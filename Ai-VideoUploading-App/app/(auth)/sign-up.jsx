@@ -26,7 +26,7 @@ const SignUp = () => {
       // Set it to be a global state
 
       router.replace("/(tabs)/home")
-    } catch (error: any) {
+    } catch (error) {
       Alert.alert("Error", error.message)
     } finally {
       setisSubmitting(false)
@@ -47,20 +47,20 @@ const SignUp = () => {
           <FormFields
             title="Username"
             value={form.username}
-            handleChangeText={(e: string) => setform({ ...form, username: e })}
+            handleChangeText={(e) => setform({ ...form, username: e })}
             otherStyles="mt-20"
           />
           <FormFields
             title="Email"
             value={form.email}
-            handleChangeText={(e: string) => setform({ ...form, email: e })}
+            handleChangeText={(e) => setform({ ...form, email: e })}
             otherStyles="mt-7"
             keyboardType="email-address"
           />
           <FormFields
             title="Password"
             value={form.password}
-            handleChangeText={(e: string) => setform({ ...form, password: e })}
+            handleChangeText={(e) => setform({ ...form, password: e })}
             otherStyles="mt-7"
           />
 
