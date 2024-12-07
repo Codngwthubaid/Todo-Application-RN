@@ -1,17 +1,6 @@
 import { Client, Account, Avatars, Databases, ID, Query } from 'react-native-appwrite';
 
-interface Config {
-    endpoint: string;
-    platform: string;
-    projectID: string;
-    databaseID: string;
-    usersCollectionID: string;
-    videosCollectionID: string;
-    storageID: string;
-}
-
-
-export const config: Config = {
+export const config  = {
     endpoint: "https://cloud.appwrite.io/v1",
     platform: "com.rn.ai-videouploading-app",
     projectID: "6751336b00350cb1c90b",
@@ -21,22 +10,17 @@ export const config: Config = {
     storageID: "67513974001040a9ad59"
 }
 
-let client: Client;
-let account: Account;
-let avatar: Avatars;
-let database: Databases;
-
-client = new Client();
+const client = new Client();
 client
     .setEndpoint(config.endpoint)
     .setProject(config.projectID)
     .setPlatform(config.platform);
 
-account = new Account(client);
-avatar = new Avatars(client);
-database = new Databases(client)
+const account = new Account(client);
+const avatar = new Avatars(client);
+const database = new Databases(client)
 
-export const createUser = async (email: string, password: string, username: string) => {
+export const createUser = async (email, password, username) => {
     try {
         const userId = ID.unique()
         const newAccount = await account.create(
@@ -63,18 +47,18 @@ export const createUser = async (email: string, password: string, username: stri
         )
         return newUser
 
-    } catch (error: any) {
+    } catch (error) {
         console.log(error);
         throw new Error(error)
     }
 }
 
 
-export const signIn = async (email: string, password: string) => {
+export const signIn = async (email, password) => {
     try {
         const session = await account.createEmailPasswordSession(email, password)
         return session;
-    } catch (error: any) {
+    } catch (error) {
         console.log(error);
         throw new Error(error)
     }
@@ -94,7 +78,7 @@ export const getCurrentUser = async () => {
         if (!currentUser) throw Error
         return currentUser.documents[0]
 
-    } catch (error: any) {
+    } catch (error) {
         console.log(error);
         throw new Error(error);
 

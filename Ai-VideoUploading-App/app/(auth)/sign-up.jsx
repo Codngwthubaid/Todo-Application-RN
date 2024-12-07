@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { Alert, Image, SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native'
-import { images } from "@/constants/images"
-import FormFields from '@/components/FormFields'
-import CustomButton from '@/components/CustomButton'
+import images from "../../constants/images"
+import FormFields from '../../components/FormFields'
+import CustomButton from '../../components/CustomButton'
 import { Link, router } from 'expo-router'
-import { createUser } from '@/lib/appwrite'
+import createUser from "../../lib/appwrite"
 
 const SignUp = () => {
   const [isSubmitting, setisSubmitting] = useState(false)
