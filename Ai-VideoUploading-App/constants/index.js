@@ -1,4 +1,4 @@
-import icons from "./icons";
-import images from "./images";
+import { images } from "./images";
+import { icons } from "./icons"
 
-export { icons, images };
+export default { images, icons }

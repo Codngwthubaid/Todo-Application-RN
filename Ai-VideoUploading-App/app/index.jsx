@@ -8,6 +8,7 @@ import { StatusBar } from 'expo-status-bar'
 
 const App = () => {
   const router = useRouter()
+
   return (
     <SafeAreaView className='bg-primary h-full'>
       <ScrollView contentContainerStyle={{ height: "100%" }}>

@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { Image, SafeAreaView, ScrollView, StyleSheet, Text, View, Alert } from 'react-native'
-import images from "../../constants/images"
+import { images } from "../../constants/images"
 import FormFields from "../../components/FormFields"
 import CustomButton from '../../components/CustomButton'
 import { Link, router } from 'expo-router'
-import signIn from "../../lib/appwrite"
+import { signIn } from "../../lib/appwrite"
 
 const SignIn = () => {
 
