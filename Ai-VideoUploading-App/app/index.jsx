@@ -10,7 +10,7 @@ import { useGlobalContext } from '../context/GlobalProvider'
 const App = () => {
   const router = useRouter()
   const { isLoading, isLoggedIn } = useGlobalContext()
-  if (!isLoading && isLoggedIn) return <Redirect href="/home" />
+  if (!isLoading && isLoggedIn) return <Redirect href="/(tabs)/home" />
 
   return (
     <SafeAreaView className='bg-primary h-full'>

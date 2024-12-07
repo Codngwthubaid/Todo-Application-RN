@@ -45,7 +45,7 @@ const TabsLayout = () => {
             <TabIcons
               icon={icons.home}
               color={color}
-              name={"Home"}
+              name={"home"}
               focused={focused}
             />
           )
@@ -60,7 +60,7 @@ const TabsLayout = () => {
             <TabIcons
               icon={icons.bookmark}
               color={color}
-              name={"Bookmark"}
+              name={"bookmark"}
               focused={focused}
             />
           )
@@ -75,7 +75,7 @@ const TabsLayout = () => {
             <TabIcons
               icon={icons.plus}
               color={color}
-              name={"Create"}
+              name={"create"}
               focused={focused}
             />
           )
@@ -90,7 +90,7 @@ const TabsLayout = () => {
             <TabIcons
               icon={icons.profile}
               color={color}
-              name={"Profile"}
+              name={"profile"}
               focused={focused}
             />
           )

@@ -3,12 +3,11 @@ import { Image, SafeAreaView, ScrollView, StyleSheet, Text, View, Alert } from '
 import { images } from "../../constants/images"
 import FormFields from "../../components/FormFields"
 import CustomButton from '../../components/CustomButton'
-import { Link, useRouter } from 'expo-router'
+import { Link, router } from 'expo-router'
 import { getCurrentUser, signIn } from "../../lib/appwrite"
 import { useGlobalContext } from '../../context/GlobalProvider'
 
 const SignIn = () => {
-    const router = useRouter()
     const { setUser, useIslogged } = useGlobalContext()
     const [form, setform] = useState({
         email: "",
